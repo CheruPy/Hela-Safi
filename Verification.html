@@ -246,7 +246,7 @@
     savingsamount.textContent = "Ksh " + saveamt.toFixed(2);
     savingsamountt.textContent = "Ksh " + saveamt.toFixed(2);
 
-
+    //here
     // Modal Logic
     const openModalBtn = document.querySelector('.open-modal-btn');
     const overlay = document.querySelector('.overlay');
@@ -257,29 +257,41 @@
       modal.style.display = 'block';
     });
 
+    // ❗ Close modal ONLY — do NOT redirect automatically
     function closeModal() {
       overlay.style.display = 'none';
       modal.style.display = 'none';
-      window.location.href = 'reviewpage.html';
-      localStorage.setItem('review', 'true');
     }
 
     function verifyTransaction() {
-      const input = document.querySelector('.input-field').value;
+      const input = document.querySelector('.input-field').value.trim();
       const messageDiv = document.getElementById('message');
       messageDiv.style.display = 'block';
 
-      const keyword = "EVATON INVESTMENT";
-      if (input.trim().length > 0 && input.includes(keyword)) {
+      // Valid M-PESA message detection
+      const isValid =
+        input.includes("Confirmed") ||
+        input.includes("sent to") ||
+        input.includes("EVATON INVESTMENT") ||
+        input.match(/[A-Z0-9]{10}/); // transaction code pattern
+
+      if (isValid) {
         messageDiv.className = 'message success';
         messageDiv.textContent = 'Transaction verification successful!';
-        setTimeout(closeModal, 1000);
+
+        // Delay before redirecting
+        setTimeout(() => {
+          localStorage.setItem('review', 'true');
+          window.location.href = 'reviewpage.html';
+        }, 1200);
+
       } else {
         messageDiv.className = 'message error';
-        messageDiv.textContent = 'Please enter a valid message';
+        messageDiv.textContent = 'Please paste a valid M-PESA message.';
       }
     }
 
+    //Here
     // Copy Till Number
     function copyTillNumber() {
       const tillNumber = '3420166';
