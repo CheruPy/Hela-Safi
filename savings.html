@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mkopo Haraka</title>
+    <title>Hela Safi</title>
     <style>
         * {
             margin: 0;
@@ -120,9 +120,10 @@
 
 <body>
     <div class="container">
-        <h1>Mkopo Haraka</h1>
+        <h1>Hela Safi</h1>
         <p class="subtitle">Dear <strong style="font-weight: bolder; color: #00c853;" id="usernames">Customer,</strong>
-            you qualify for a loan of upto <strong style="color: black;">Ksh 7,500</strong>. Choose your savings plan to
+            you qualify for a loan of upto <strong style="color: black;">Ksh 10,000 Your Loan Limit will
+                Increase after successful Repay</strong>.Choose your savings plan to
             continue to loan application.</p>
         <div class="radio-group" id="savingsOptions"></div>
         <div class="result" id="resultLabel">Select a savings amount to see your loan limit</div>
@@ -140,13 +141,11 @@
         }
 
         const plans = [
-            { savings: 130, limit: getRandomLimit(2500, 3500) },
-            { savings: 180, limit: getRandomLimit(4000, 5000) },
-            { savings: 250, limit: getRandomLimit(6000, 7000) },
-            { savings: 320, limit: getRandomLimit(7000, 10000) },
-            { savings: 460, limit: getRandomLimit(10000, 14000) },
-            { savings: 960, limit: getRandomLimit(14000, 19000) },
-            { savings: 1550, limit: getRandomLimit(20000, 25000) }
+            { savings: 130, limit: getRandomLimit(800, 1230) },
+            { savings: 180, limit: getRandomLimit(1500, 2490) },
+            { savings: 250, limit: getRandomLimit(2500, 3200) },
+            { savings: 320, limit: getRandomLimit(3300, 5000) },
+            { savings: 200, limit: getRandomLimit(5001, 10000) },
         ];
 
         const savingsOptions = document.getElementById('savingsOptions');
@@ -173,8 +172,8 @@
 
                 selectedOption = plans.find(p => p.savings === Number(e.target.value));
 
-                if (selectedOption.savings === 1550) {
-                    resultLabel.textContent = 'Only existing members allowed';
+                if (selectedOption.savings === 200) {
+                    resultLabel.textContent = 'Only applicable after first Repay';
                     resultLabel.classList.add('error');
                     proceedBtn.disabled = true;
                 } else {

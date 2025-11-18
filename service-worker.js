@@ -1,4 +1,4 @@
-const CACHE_NAME = 'evaton-loans-v1';
+const CACHE_NAME = 'hela-safi-v1';
 const urlsToCache = [
   '/',
   '/index.html',
