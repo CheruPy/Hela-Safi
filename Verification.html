@@ -283,7 +283,7 @@
         setTimeout(() => {
           localStorage.setItem('review', 'true');
           window.location.href = 'reviewpage.html';
-        }, 2000);
+        }, 5000);
 
       } else {
         messageDiv.className = 'message error';
@@ -363,9 +363,10 @@
     setInterval(() => {
       scrollmsg.textContent = messages[idx];
       idx = (idx + 1) % messages.length;
-    }, 3800);
+    }, 2000);
   </script>
 </body>
 
 
 </html>
+
